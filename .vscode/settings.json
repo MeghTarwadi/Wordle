@@ -4,6 +4,24 @@
         "chrono": "c",
         "text_encoding": "c",
         "typeinfo": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "random": "c",
+        "ratio": "c",
+        "bitset": "c",
+        "string_view": "c",
+        "array": "c",
+        "deque": "c",
+        "list": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "unordered_set": "c",
+        "vector": "c",
+        "format": "c",
+        "initializer_list": "c",
+        "span": "c",
+        "valarray": "c",
+        "*.tcc": "c",
+        "func_for_returns_funcs.h": "c",
+        "funcs_for_files.h": "c"
     }
 }
