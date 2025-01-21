@@ -4,6 +4,8 @@
 
 int main()
 {
+    printf("This will create a general data to play games such as statistical report like which characters are most used etc");
+    printf("\nAnd it will create words file based on its size");
     // array of pointer of type file
     FILE *output_file[95];
     int length_of_file[95];
@@ -26,19 +28,31 @@ int main()
     int length_of_word = 5;
     // To sort each word by length
     char *name = (char *)malloc(14 * sizeof(char));
-
+    // scans every line on file and stores each line in buff
     while (fscanf(file, "%s", buff) == 1)
     {
+        // length of line
         int current_length = length(buff);
+        // if its above 5 than
         if (current_length >= length_of_word)
         {
+            // It will increment count by 1 to record amount of lines which data got appended
             length_of_file[current_length - 5]++;
-            // fprintf(output_file[current_length - 5], buff);
+            // adding \n at the end to make file reusable if it readed by lines
+            buff[current_length + 1] = buff[current_length];
+            buff[current_length] = '\n';
+            // adds data to file... append but in c
+            fprintf(output_file[current_length], buff);
         }
     }
-    for (int i = 0; i < 95; i++)
+    //It will remove files which has 0 data
+    for (int i = 5; i < 100; i++)
     {
-        printf("%d %d\n", i + 5, length_of_file[i]);
+        if (length_of_file[i-5] <= 0)
+        {
+            path(i, name);
+            remove(name);
+        }
     }
     return 0;
 }
