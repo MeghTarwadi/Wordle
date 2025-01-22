@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcs_for_str_manipulation.h";
+#include "funcs_for_str_manipulation.h"
 #include "func_for_returns_funcs.h"
 
 // Function prototypes

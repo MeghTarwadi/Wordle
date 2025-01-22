@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// #include "include/func_for_returns_funcs.h"
+// #include "include/funcs_for_str_manipulation.h"
+// #include "include/func_for_linked_list.h"
+// #include "include/funcs_for_files.h"
+// #include "include/play.h"
+
 #include "funcs/func_for_returns_funcs.c"
+#include "funcs/func_for_linked_list.c"
 #include "funcs/funcs_for_str_manipulation.c"
 #include "funcs/funcs_for_files.c"
 #include "funcs/play.c"

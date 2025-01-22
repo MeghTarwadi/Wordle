@@ -3,7 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "play.h" // Include the header for Node definition
+
+typedef struct node
+{
+    char *word;
+    struct node *next;
+} Node;
 
 // Function prototypes
 void remove_which_are_not_fixed(Node *node, char *list);
