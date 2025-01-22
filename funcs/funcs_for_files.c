@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/funcs_for_str_manipulation.h"
 
+#include "../include/func_for_returns_funcs.h"
+#include "../include/funcs_for_str_manipulation.h"
 
 void create_wordle_files(FILE *file);
 void outputfiles(FILE *file[95]);

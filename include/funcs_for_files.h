@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcs_for_str_manipulation.c"  // Include the relevant header for str_to_spaces, intToStr, path_of_file
+#include "funcs_for_str_manipulation.h";
+#include "func_for_returns_funcs.h"
 
 // Function prototypes
 void outputfiles(FILE *file[95]);

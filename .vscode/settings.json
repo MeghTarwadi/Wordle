@@ -23,6 +23,8 @@
         "*.tcc": "c",
         "func_for_returns_funcs.h": "c",
         "funcs_for_files.h": "c",
-        "funcs_for_str_manipulation.h": "c"
+        "funcs_for_str_manipulation.h": "c",
+        "func_for_linked_list.h": "c",
+        "play.h": "c"
     }
 }
