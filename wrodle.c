@@ -26,7 +26,7 @@ void main()
             path_of_file(mode, words_path);
             FILE *word_file;
             word_file = fopen(words_path, "r");
-            play(word_file, size);
+            play(word_file, size,mode);
             fclose(word_file);
         }
         else

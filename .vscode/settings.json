@@ -22,6 +22,7 @@
         "valarray": "c",
         "*.tcc": "c",
         "func_for_returns_funcs.h": "c",
-        "funcs_for_files.h": "c"
+        "funcs_for_files.h": "c",
+        "funcs_for_str_manipulation.h": "c"
     }
 }

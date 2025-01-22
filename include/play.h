@@ -5,6 +5,11 @@
 #include <stdlib.h>
 
 // Function prototype for play
-void play(FILE *words, int size);
+void play(FILE *words, int size,int str_len);
+typedef struct node
+{
+    char *word;
+    struct node *next;
+} Node;
 
 #endif // PLAY_H

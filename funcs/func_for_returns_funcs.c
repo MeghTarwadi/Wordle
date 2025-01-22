@@ -4,6 +4,7 @@
 int length(char *word);
 int strToInt(int length, char num[length]);
 int validate(int number);
+int are_same(char *str1, char *str2);
 
 int length(char *word)
 {
@@ -41,4 +42,16 @@ int validate(int number)
         }
     }
     return -1;
+}
+
+int are_same(char *str1, char *str2)
+{
+    for (int i = 0; i < length(str1); i++)
+    {
+        if (str1[i] != str2[i])
+        {
+            return 0;
+        }
+    }
+    return 1;
 }
