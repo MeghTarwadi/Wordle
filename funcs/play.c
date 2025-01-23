@@ -30,25 +30,25 @@ void play(FILE *words, int size, int str_len)
     rewind(words);
     ptr = NULL;
     ptr = head;
-    // char fixed[str_len], contains[str_len], doesnt_contain[(int)'z' - (int)'a' - str_len + 1];
+    // char fixed[str_len], contains[str_len], doesnt_contain[str_len];
     // // initialise with whitespaces
     // str_to_spaces(doesnt_contain, str_len);
     // str_to_spaces(contains, str_len);
     // str_to_spaces(fixed, str_len);
 
-    char doesnt_contain[] = "XYZEW              ";
-    char fixed[] = "A P  ";
-    char contains[] = "AP   ";
+    char *doesnt_contain = "bcd   ";
+    char *fixed = "a p   ";
+    char *contains = "   e  ";
 
-    remove_which_are_not_fixed(ptr, fixed);
-    // remove_unecessary(ptr, doesnt_contain, contains, fixed);
+    // remove_which_are_not_fixed(ptr, fixed);
+    remove_unecessary(ptr, doesnt_contain, contains, fixed);
 
     // Display all words
-    while (ptr->next != NULL)
-    {
-        printf("%s\n", ptr->word);
-        ptr = ptr->next;
-    }
+    // while (ptr->next != NULL)
+    // {
+    //     printf("%s\n", ptr->word);
+    //     ptr = ptr->next;
+    // }
 
     // Looping till we get answer
     // while (are_same(rand_word,guess)!=1)

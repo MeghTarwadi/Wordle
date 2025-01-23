@@ -5,6 +5,7 @@ int length(char *word);
 int strToInt(int length, char num[length]);
 int validate(int number);
 int are_same(char *str1, char *str2);
+int has_char(char *word, char letter, int index);
 
 int length(char *word)
 {
@@ -12,6 +13,22 @@ int length(char *word)
     for (length_of_word; word[length_of_word] != '\0'; length_of_word++)
         continue;
     return length_of_word;
+}
+
+int has_char(char *word, char letter, int index)
+{
+    if (word[index] == letter)
+    {
+        return 0;
+    }
+    for (int i = 0; i < length(word); i++)
+    {
+        if (word[i] == letter)
+        {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 int strToInt(int length, char num[length])
