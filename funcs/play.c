@@ -4,9 +4,10 @@
 #include "../include/funcs_for_str_manipulation.h"
 #include "../include/func_for_linked_list.h"
 
-void play(FILE *words, int size, int str_len);
+void ask(FILE *words, int size, int str_len);
+void guess_word(char *word,int str_len);
 
-void play(FILE *words, int size, int str_len)
+void ask(FILE *words, int size, int str_len)
 {
 
     char rand_word[str_len];
@@ -55,3 +56,5 @@ void play(FILE *words, int size, int str_len)
     // {
     // }
 }
+
+void guess_word(char *word,int str_len){}

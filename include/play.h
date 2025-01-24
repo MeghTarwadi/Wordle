@@ -8,6 +8,7 @@
 
 // Function prototype for play
 
-void play(FILE *words, int size, int str_len);
+void ask(FILE *words, int size, int str_len);
+void guess_word(char *word,int str_len);
 
 #endif // PLAY_H

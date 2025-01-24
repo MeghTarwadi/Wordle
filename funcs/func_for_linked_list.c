@@ -37,7 +37,7 @@ int contains(char *list, char *word)
             {
                 return 0;
             }
-            if (has_char(word, list[i], i) == 1)
+            if (has_char(word, list[i], i) == 0)
             {
                 return 0;
             }
@@ -51,7 +51,6 @@ int doesntContain(char *list, char *word)
     {
         if ((int)list[i] != 32)
         {
-            printf("%s has %d of %c\n", word, has_char(word, list[i], -1), list[i]);
             if (has_char(word, list[i], -1) > 0)
             {
                 return 0;
@@ -121,9 +120,6 @@ int doesntContain(char *list, char *word)
 //     }
 // }
 
-// char *doesnt_contain = "xyd   ";
-// char *fixed = "a p   ";
-// char *contains = "   e  ";
 void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fix)
 {
     Node *node = (Node *)malloc(sizeof(Node));

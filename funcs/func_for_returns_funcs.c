@@ -6,7 +6,20 @@ int strToInt(int length, char num[length]);
 int validate(int number);
 int are_same(char *str1, char *str2);
 int has_char(char *word, char letter, int index);
+int is_it_a_word(char *word, FILE *file, int size);
 
+int is_it_a_word(char *word, FILE *file, int size)
+{
+    char buff[size];
+    while (fscanf(file, "%s", buff) == 1)
+    {
+        if (are_same(buff, word) == 1)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
 int length(char *word)
 {
     int length_of_word = 0;
