@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "../include/func_for_returns_funcs.h"
 #include "../include/funcs_for_str_manipulation.h"
 
 void create_wordle_files(FILE *file);
@@ -12,7 +10,7 @@ void outputfiles(FILE *file[95])
 {
     char *name = (char *)malloc(14 * sizeof(char));
 
-    for (int i = 5; i < 100; i++)
+    for (int i = 5; i < 95; i++)
     {
         path_of_file(i, name);
         file[i] = fopen(name, "w");
@@ -51,7 +49,7 @@ void create_wordle_files(FILE *file)
         if (current_length >= length_of_word)
         {
             // It will increment count by 1 to record amount of lines which data got appended
-            length_of_file[current_length - 5]++;
+            length_of_file[current_length - length_of_word]++;
             // adding \n at the end to make file reusable if it readed by lines
             buff[current_length + 1] = buff[current_length];
             buff[current_length] = '\n';
@@ -63,7 +61,7 @@ void create_wordle_files(FILE *file)
     free(name);
 
     // Close all opened files in the output_file array
-    for (int i = 0; i < 95; i++)
+    for (int i = length_of_word; i < 95; i++)
     {
         if (output_file[i] != NULL)
         {
@@ -72,7 +70,7 @@ void create_wordle_files(FILE *file)
     }
     FILE *available;
     available = fopen("game_data/nums_of_letter.txt", "w");
-    for (int i = 5; i < 100; i++)
+    for (int i = 5; i < 95; i++)
     {
         if (length_of_file[i - 5] <= 0)
         {

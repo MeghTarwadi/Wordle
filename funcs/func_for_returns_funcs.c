@@ -11,13 +11,16 @@ int is_it_a_word(char *word, FILE *file, int size);
 int is_it_a_word(char *word, FILE *file, int size)
 {
     char buff[size];
+    rewind(file);
     while (fscanf(file, "%s", buff) == 1)
     {
         if (are_same(buff, word) == 1)
         {
+            rewind(file);
             return 1;
         }
     }
+    rewind(file);
     return 0;
 }
 int length(char *word)
@@ -64,13 +67,16 @@ int validate(int number)
     char num[4];
     char num2[11];
     nums_of_letter = fopen("game_data/nums_of_letter.txt", "r");
+    rewind(nums_of_letter);
     while (fscanf(nums_of_letter, "%s %s", num, num2) == 2)
     {
         if (strToInt(3, num) == number)
         {
+            rewind(nums_of_letter);
             return strToInt(8, num2);
         }
     }
+    rewind(nums_of_letter);
     return -1;
 }
 

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/func_for_returns_funcs.h"
+#include "../include/funcs_for_str_manipulation.h"
 
 typedef struct node
 {
@@ -17,6 +18,7 @@ typedef struct node
 int fixed(char *list, char *word);
 int contains(char *list, char *word);
 int doesntContain(char *list, char *word);
-void remove_unecessary(Node *head, char *doesnt_contain, char *contains, char *fixed);
+void statistics(Node *ptr, int count, char *selected);
+void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fix, char *selected);
 
 #endif // FUNC_FOR_LINKED_LIST_H
