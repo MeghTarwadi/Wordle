@@ -90,7 +90,7 @@ void verifyTheGuess(char *correct, char *selected, char *fixed, char *contains, 
     {
         if (selected[i] != '\0' && correct[i] != '\0' && fixed[i] != '\0' && contains[i] != '\0' && doesnt_contain[i] != '\0')
         {
-            printf("\n%s", player);
+            printf("%s", player);
             if (correct[i] == selected[i])
             {
                 fixed[i] = selected[i];

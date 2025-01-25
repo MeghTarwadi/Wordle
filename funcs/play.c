@@ -42,6 +42,7 @@ void ask(FILE *words, int size, int str_len, char *correct)
         round++;
         printf("\n\n\n\nKone   : Guess %d\n\n\n\n\n", round);
         remove_unecessary(ptr, doesnt_contain, contains, fixed, guess);
+        printf("\n");
         verifyTheGuess(correct, guess, fixed, contains, doesnt_contain, "Kisuke :");
     }
 }
@@ -83,6 +84,7 @@ void play_self(FILE *words, char *word, int str_len)
             printf("Kisuke : I have to guess a new word ");
             scanf("%s", guess);
         }
+        printf("\n");
         verifyTheGuess(word, guess, temp, temp, temp, "Aizen  :");
     }
 }
