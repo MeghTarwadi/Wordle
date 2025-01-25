@@ -16,6 +16,8 @@ void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fi
 
 int fixed(char *list, char *word)
 {
+    // if the word has character at that position that list has than it is fixed else it is not
+    // this will lead to find guessed word easily
     for (int i = 0; i < length(word); i++)
     {
         if ((int)list[i] != 95)
@@ -32,13 +34,27 @@ int fixed(char *list, char *word)
 
 void statistics(Node *ptr, int count, char *selected)
 {
+    /*
+    This function will lead to find the frequency of characters and based on that it will give best possible
+    word that fits most of the requirements it analyses how many times each alphabets is repeated and than
+    it sort those repeated alphabets in descending order and than the word containing maximum amount of these alphabets
+    will be selected so that if word is not correct than it will help to remove majority of words which have those alphabets
+    hence it will lead to narrow down the words
+    */
     Node *head = ptr;
+    /*
+    I used LL for this since it is ******easy****** to handle
+    Its a joke btw!! i m not using linked list for this purpose
+    its a because C dont have list data structure as pythons has but it has struct so i did this
+    and another reason is that it is great for memory management bcos assume that its 4-5 th round
+    we already have narrowed down words by so much hance we dont need to store all 26 character in memory
+    we can store only those which are required
+    */
     typedef struct countAlpha
     {
         char alphabets;
         int counts;
         struct countAlpha *next;
-
     } chrCounter;
     int len = length(selected);
     // int len = 24;
@@ -49,24 +65,30 @@ void statistics(Node *ptr, int count, char *selected)
     list->counts = 1;
     list->next = NULL;
 
+    // this loop will count the frequency of each character FOR each words that are in ptr
     chrCounter *copylist;
     for (ptr; ptr->next != NULL; ptr = ptr->next)
     {
+        // this loop will let us use every character
         for (int i = 0; i < len; i++)
         {
+            // list stores a:10 , b:60 , c:15 etc in linked list formate so to find whether ptr->word[i] is in this list or not
             copylist = list;
             for (copylist; copylist->next != NULL; copylist = copylist->next)
             {
+                // if list has that ptr->word[i] character than we will increment its count by 1
                 if (copylist->alphabets == ptr->word[i])
                 {
                     copylist->counts++;
                     break;
                 }
             }
+            // if its last node than i checked it manually... bcos it was showing core dump and took like 3 hr so i gave ip and checked last node manually
             if (copylist->alphabets == ptr->word[i])
             {
                 copylist->counts++;
             }
+            // if its not than we will add a new node with that character that list dont have and make its count 1
             else
             {
                 if (ptr->word[i] != '\0')
@@ -86,6 +108,7 @@ void statistics(Node *ptr, int count, char *selected)
     //     printf("%c %d \n", copylist->alphabets, copylist->counts);
     // }
     char toprepeats[len];
+    // To find most repeated top(5 or 6or 7 etc based on length) alphabets
     chrCounter *temp = (chrCounter *)malloc(sizeof(chrCounter));
     printf("Aizen  : Now based on those words by calculating how often each words repeats and ranking them...\n");
     printf("Aizen  : The word which contains ");
@@ -93,6 +116,10 @@ void statistics(Node *ptr, int count, char *selected)
     {
         temp->counts = 0;
         copylist = list;
+        /*
+        Selection sort but instead of sorting...it will directly store that characterw which is most repeated
+        and revalue its count by zero so that it wont get selected as maximum again
+        */
         for (copylist; copylist != NULL; copylist = copylist->next)
         {
             if (copylist->counts > temp->counts)
@@ -101,6 +128,7 @@ void statistics(Node *ptr, int count, char *selected)
                 toprepeats[i] = copylist->alphabets;
             }
         }
+        // this things here its just to make output look better thats all
         if (toprepeats[i] == '\0')
         {
             continue;
@@ -116,8 +144,15 @@ void statistics(Node *ptr, int count, char *selected)
         }
     }
     printf("\n");
+    // now based on that to find the word which contains those characters
     for (int i = len - 1; i >= 0; i--)
     {
+        /*
+        topreapeats is in decending order it will check whether all character exist or not
+        if not than it will remove least segnificant character and check again and repeats this till it get word
+        which contains those characters by making sure that the word which is getting selected has tha characters which are
+        repeated most in the all possible words list hence it will allow to narrow down the list significantly
+        */
         ptr = head;
         for (ptr; ptr->next != NULL; ptr = ptr->next)
         {
@@ -145,6 +180,15 @@ void statistics(Node *ptr, int count, char *selected)
 
 int contains(char *list, char *word)
 {
+    /*
+    If list has characters that word has than it will return 1
+    else 0
+    but if word has the character which are in list but if word has those
+    character same positioned as in list than it will return 0 bcos it means that
+    character is not fixed hence it cant be in that position.
+
+    this will lead to find fixed characters easily
+    */
     for (int i = 0; list[i] != '\0'; i++)
     {
         if ((int)list[i] != 95)
@@ -163,6 +207,9 @@ int contains(char *list, char *word)
 }
 int doesntContain(char *list, char *word)
 {
+    /*
+    if word contains character that list contains than it will return 0;
+     */
     for (int i = 0; list[i] != '\0'; i++)
     {
         if ((int)list[i] != 32)
@@ -175,6 +222,16 @@ int doesntContain(char *list, char *word)
     }
     return 1;
 }
+
+
+// you may think why i didnt removed this code that i havent even used 
+// Its bcos i wasted 2 days on debugging core dump
+// its a joke btw!! but its based on truth 
+// the real reason behind this is that its more optimised than what i have coded above
+// its just that i dont want to see core dumping me over and over again  :')
+
+
+
 
 // void remove_which_are_not_fixed(Node *node, char *list)
 // {
@@ -236,6 +293,7 @@ int doesntContain(char *list, char *word)
 
 void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fix, char *selected)
 {
+    // this does what it says it removes words which has 0 probability to be a guessed word
     Node *node = head;
     Node *temp;
     int count = 0;
@@ -248,6 +306,7 @@ void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fi
     printf("Aizen  : Hence by excluding words which has those characters at that position\n");
     printf("Aizen  : And by excluding words which dont have those characters\n\n");
 
+    // this will remove words which doesnt meet the conditions and since its a LL the memory will be freed hance it will be more efficient
     while (node->next != NULL)
     {
         if (fixed(fix, node->word) == 1 && contains(contain, node->word) == 1 && doesntContain(doesnt_contain, node->word) == 1)
@@ -273,7 +332,7 @@ void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fi
         // remove_which_are_not_fixed(node, fix);
     }
     printf("Aizen  : There remains words such as ");
-
+    // this thing is just to make output look clean like if possible words are more than 5 than it will show 5 and remaining word will be shown with integer as count
     node = head;
     int flag = 0;
     while (node->next != NULL)
@@ -299,7 +358,7 @@ void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fi
     }
     if (flag == 0)
     {
-        printf("...");
+        printf("...\n");
     }
     else
     {
@@ -308,5 +367,5 @@ void remove_unecessary(Node *head, char *doesnt_contain, char *contain, char *fi
 
     node = head;
     statistics(node, count, selected);
-    printf("\n\n\nAizen  : By analysing this I came upto solution that \"%s\" is the best go\n", selected);
+    printf("\nAizen  : By analysing this I came upto solution that \"%s\" is the best go\n", selected);
 }

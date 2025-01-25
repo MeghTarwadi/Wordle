@@ -9,6 +9,6 @@
 // Function prototype for play
 
 void ask(FILE *words, int size, int str_len, char *correct);
-void play_self(char *word, int str_len);
+void play_self(FILE *words, char *word, int str_len);
 
 #endif // PLAY_H

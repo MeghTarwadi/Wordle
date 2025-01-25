@@ -15,6 +15,7 @@
 
 void main()
 {
+    // this is bulky because it just has lots of print statements thats all it doent have any use full things to do
     char playmode[50];
     printf("\n\n\n\n\n");
     printf("⠀⠀⠈⠒⠛⠛⢁⠀⠙⠛⠋⢁⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⣩⠟⣡⡆⠀⠀⢀⣤⢸⣿⣶⡄⢀⠀⠙⠧⢈⣿⠘⣿⡌⣿⡆⢲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\t⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
@@ -51,14 +52,12 @@ void main()
     {
         printf("Aizen  : Who would be the one to guess the words?\n");
         printf("Kisuke : The one who should guess would be ");
-        // playmode[0] = 'a';
         scanf("%s", &playmode);
         if (playmode[0] == 'm' || playmode[0] == 'M' || playmode[0] == 'K' || playmode[0] == 'k')
         {
             int length;
-            printf("Aizen  : How many characters are in the word?\n");
+            printf("\nAizen  : How many characters are in the word?\n");
             printf("Kisuke : The word will be the length of ");
-            // length = 6;
             scanf("%d", &length);
             while (validate(length) <= 0)
             {
@@ -66,11 +65,19 @@ void main()
                 printf("Kisuke : Oh my... Arent you the one who won spell bee. The lenght will be ");
                 scanf("%d", &length);
             }
-            // char guess_word[length];
-            // printf("\nKisuke in his mind... There are total %d words with the length of %d characters \n", validate(length), length);
-            // printf("Kisuke : Now think kisuke a word that Aizen wont be able to guess...\n");
-            // printf("Kisuke : Can word a be ");
-            // scanf("%s", guess_word);
+            printf("\nAizen  : Let the fun bigun... Now think of a word Urahara!! \n", length);
+            printf("Kisuke in his mind... There are total %d words with the length of %d characters \n", validate(length), length);
+            char *words_path = (char *)malloc(14 * sizeof(char));
+            path_of_file(length, words_path);
+            FILE *word_file;
+            word_file = fopen(words_path, "r");
+
+            char correct[length];
+            str_to_spaces(correct, length);
+            random_word(validate(length), correct, word_file, length);
+            // printf("%d\n", validate(length));
+            play_self(word_file, correct, length);
+            fclose(word_file);
         }
         else if (playmode[0] == 'y' || playmode[0] == 'Y' || playmode[0] == 'A' || playmode[0] == 'a')
         {
@@ -102,7 +109,6 @@ void main()
                 printf("Kisuke : My brain is not braining is \"%s\" is a real word with the length %d? No it is not!\n", guess_word, length);
                 printf("Kisuke : I have to guess a new word ");
                 scanf("%s", guess_word);
-                
             }
             printf("Kisuke : Go ahead Aizen I have guessed the word\n");
             printf("Aizen : The fun begins now\n");
@@ -113,11 +119,13 @@ void main()
         }
         else
         {
+            // this will split words according to its length
             printf("Aizen  : Arent you a little fellow who dont even know how english works?\n");
             FILE *file = fopen("data/words_original.txt", "r");
             rewind(file);
             create_wordle_files(file);
             printf("Kisuke : You see... I was splitting words according to its length.\n");
+            fclose(file);
             printf("\n\n");
         }
         break;

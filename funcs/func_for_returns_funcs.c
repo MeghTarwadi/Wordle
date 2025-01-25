@@ -8,6 +8,8 @@ int are_same(char *str1, char *str2);
 int has_char(char *word, char letter, int index);
 int is_it_a_word(char *word, FILE *file, int size);
 
+// here function does pretty much as what they named and returns 1 if true else 0
+
 int is_it_a_word(char *word, FILE *file, int size)
 {
     char buff[size];
@@ -61,6 +63,7 @@ int strToInt(int length, char num[length])
     return number;
 }
 
+// this returns the total count of words in the file
 int validate(int number)
 {
     FILE *nums_of_letter;

@@ -11,13 +11,15 @@ void copy_string(char *src, char *dest);
 void str_to_underscore(char *name, int length);
 void verifyTheGuess(char *correct, char *selected, char *fixed, char *contains, char *doesnt_contain, char *player);
 
+// here function does pretty much as what they named and directly store result by changing the string which is passed by address hence changes are permenent
+
 void str_to_spaces(char *name, int length)
 {
     for (int i = 0; i < length; i++)
     {
         name[i] = ' ';
     }
-    name[length-1]='\0';
+    name[length - 1] = '\0';
 }
 
 void str_to_underscore(char *name, int length)
@@ -26,7 +28,7 @@ void str_to_underscore(char *name, int length)
     {
         name[i] = '_';
     }
-    name[length-1]='\0';
+    name[length - 1] = '\0';
 }
 
 void intToStr(int num, char *name, int start, int end)
@@ -88,8 +90,7 @@ void verifyTheGuess(char *correct, char *selected, char *fixed, char *contains, 
     {
         if (selected[i] != '\0' && correct[i] != '\0' && fixed[i] != '\0' && contains[i] != '\0' && doesnt_contain[i] != '\0')
         {
-
-            printf("%s", player);
+            printf("\n%s", player);
             if (correct[i] == selected[i])
             {
                 fixed[i] = selected[i];

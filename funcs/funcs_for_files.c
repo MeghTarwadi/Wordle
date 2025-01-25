@@ -8,6 +8,7 @@ void outputfiles(FILE *file[95]);
 
 void outputfiles(FILE *file[95])
 {
+    // this will create files and assign it to the array of pointers
     char *name = (char *)malloc(14 * sizeof(char));
 
     for (int i = 5; i < 95; i++)
@@ -92,6 +93,9 @@ void create_wordle_files(FILE *file)
     fclose(available);
 }
 
+
+
+// i forgot why i wrote this!!
 // void save_in_order(int list[((int)'z') - ((int)'a') + 1])
 // {
 //     FILE *file = fopen("game_data/overall.txt", "w");
