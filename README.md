@@ -77,9 +77,7 @@ Honestly, I was inspired by a **YouTube video** that used AI to solve Wordle, an
 
 ## Screenshots
 
-![image](https://github.com/user-attachments/assets/4b17912e-3096-4b17-9bfb-9c713e7691f8)
-![image](https://github.com/user-attachments/assets/009a50cc-36b1-481b-a3fb-fc43b0601981)
----
+![worlde](https://github.com/user-attachments/assets/940e8719-811f-4d62-b56a-38568708d450)
 
 ---
 

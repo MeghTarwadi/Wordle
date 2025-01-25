@@ -111,7 +111,7 @@ void main()
                 scanf("%s", guess_word);
             }
             printf("Kisuke : Go ahead Aizen I have guessed the word\n");
-            printf("Aizen : The fun begins now\n");
+            printf("Aizen  : The fun begins now\n");
 
             rewind(word_file);
             ask(word_file, validate(length), length + 1, guess_word);
