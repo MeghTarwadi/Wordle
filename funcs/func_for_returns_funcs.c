@@ -8,7 +8,7 @@ int are_same(char *str1, char *str2);
 int has_char(char *word, char letter, int index);
 int is_it_a_word(char *word, FILE *file, int size);
 
-// here function does pretty much as what they named and returns 1 if true else 0
+// here function does pretty much as what they named and returns 1 if True else 0
 
 int is_it_a_word(char *word, FILE *file, int size)
 {
